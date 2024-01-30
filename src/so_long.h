@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "../libft/libft.h"
 
 typedef struct s_data
 {
@@ -26,11 +27,18 @@ typedef struct s_data
 
 typedef struct s_map
 {
-	int		row;
-	int		col;
+	int		row_count;
+	int		all_size;
+	int		col_count;
 	char	**line;
 	int		fd;
 }			t_map;
+
+typedef	struct s_ptr
+{
+	t_map	*mlx;
+
+}			t_ptr;
 
 typedef struct s_mapcnt
 {
@@ -44,5 +52,7 @@ int		valid_map(char **map, int width, int num);
 int		map_size(char **argv);
 void	ft_free(char **map, int i);
 void	print_error(char *str);
+int		valid_map(char **map, int width, int num);
+int	map_check(char **map);
 
 #endif
