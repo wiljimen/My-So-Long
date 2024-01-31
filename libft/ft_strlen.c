@@ -6,9 +6,10 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:15:42 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/09/22 14:15:42 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/01/31 12:42:00 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)
