@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/02/01 16:31:46 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/02/01 16:40:01 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,32 +20,26 @@ MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_DIR = libft/
 
-# CAMBIAR :D
-SRCS = *.c
+SRCS = ft_sl_utils.c map_create.c
 
 OBJS = $(SRC:.o=.c)
-
-#.c.o:
-#	($CC) $(CFLAGS) $(MLX_FLAGS) -I $(INCLUDES) -c $< -o $@
 	
-INCLUDES = includes/
+INCLUDES = includes/libft.h
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		make -sC $(LIBFT_DIR)
-		cp ./libft/libft.a .
-#		$(CC) $(MLX_FLAGS) libft.a -o $(OBJS) -I $(INCLUDES) -o $(NAME)
-
-#%.o: %.c
-#		$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+		mv ./libft/libft.a .
+		$(CC) $(MLX_FLAGS) $(CFLAGS) libft.a -o $(OBJS) -I $(INCLUDES) -o $(NAME)
 
 clean :
-		make -sC clean $(LIBFT_DIR)
+		make clean -sC  $(LIBFT_DIR)
+		$(RM) $(OBJS)
 
 
 fclean :	clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) libft.a
 
 re : fclean all
 
