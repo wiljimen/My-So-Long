@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiljimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:32:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/11/20 12:57:20 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:47:15 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_auxwrite(int fd, char *aux)
 {
@@ -82,23 +82,3 @@ char	*ft_strcprinter(char **s)
 	}
 	return (retstr);
 }
-
-/*
-int	main(void)
-{
-	char	*file;
-	int		fd;
-	char	*str;
-
-	file = "Prueba.txt";
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	while (str)
-	{
-		printf("%s", str);
-		str = get_next_line(fd);
-		free(str);
-	}
-	system("leaks -q a.out");
-	return(0);
-}*/

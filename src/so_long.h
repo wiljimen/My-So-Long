@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/01/31 15:15:22 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:40:46 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
-# include "../libft/get_next_line.h"
 
 typedef struct s_data
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiljimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:58:14 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/10/10 16:59:35 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:38:48 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <ctype.h>
+# include <fcntl.h>
+# include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -69,5 +75,13 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// GNL PART
+
+size_t	ft_strlen_aux(const char *s);
+char	*ft_strjoin_aux(char const *s1, const char *s2);
+char	*ft_auxwrite(int fd, char *aux);
+char	*get_next_line(int fd);
+char	*ft_strcprinter(char **s);
 
 #endif
