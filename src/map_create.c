@@ -6,37 +6,14 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/02 17:17:29 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:55:40 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// int	map_size_total(char **argv)
-// {
-// 	int		i;
-// 	int		fd;
-// 	char	*buffer;
-
-// 	i = 0;
-// 	fd = open(argv[0], O_RDONLY);
-// 	if (fd == -1)
-// 		return (0);
-// 	buffer = malloc(sizeof(char));
-// 	while (read(fd, buffer, 1))
-// 		i++;
-// 	close(fd);
-// 	free(buffer);
-// 	return (i);
-// }
-
-/*
-j = 0;
-		while (map[i][j])
-		{
-			j++;
-		}
-*/
+#include "ft_sl_utils.c"
+#include "ft_strlen.c"
+#include "get_next_line.c"
 
 int	get_num_rows(int fd)
 {
@@ -54,14 +31,14 @@ int	get_num_rows(int fd)
 	return (i);
 }
 
-int	valid_map(char **map, int width, int len, int fd)
+int	valid_map(char **map, int width, int height)
 {
 	int	i;
 
 	i = 0;
 	while (i < width - 1)
 	{
-		if (map[0][i] != '1' || map[get_num_rows(fd)][i] != '1')
+		if (map[0][i] != '1' || map[height - 1][i] != '1')
 			return (1);
 		i++;
 	}
@@ -71,7 +48,7 @@ int	valid_map(char **map, int width, int len, int fd)
 		if ((int)ft_strlen(map[i]) != width
 			|| map[i][width - 1] != '1' || map[i][0] != '1')
 		{
-			ft_free(map, len);
+			ft_free(map, width);
 			return (1);
 		}
 		i++;
@@ -90,9 +67,9 @@ int	map_check(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '1' || map[i][j] != '0'
-				|| map[i][j] != 'E' || map[i][j] != 'P'
-				|| map[i][j] != 'C' || map[i][j] != '\n')
+			if (map[i][j] != '1' && map[i][j] != '0'
+				&& map[i][j] != 'E' && map[i][j] != 'P'
+				&& map[i][j] != 'C' && map[i][j] != '\n')
 			{
 				ft_free(map, i);
 				return (1);
@@ -104,47 +81,33 @@ int	map_check(char **map)
 	return (0);
 }
 
-// Conseguir saber si el mapa es válido con todo esto,
-// y guardandolo en variables para saber el resultado.
-// En proceso...
-/*
-int	real_map_valid(t_ptr *map_ptr, char **argv)
-{
-	map_ptr->map.fd = open(argv[1], O_RDONLY);
-	map_ptr->map.all_size = map_size(argv);
-	if (map_ptr->map.all_size == 0)
-		return (0);
-	map_ptr->map.line = get_next_line(map_ptr->map.fd);
-	map_ptr->map.col_count = ft_strlen(map_ptr->map.line);
-}*/
-
-
-
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
+	int 	fd;
+	char	**map;
+	char	*aux;
+	int		row_len;
+	int		row_num;
+	
+	fd = open("/System/Volumes/Data/sgoinfre/students/wiljimen/My-So-Long/src/mapa/mapa.ber", O_RDONLY);
+	printf("%d\n", fd);
+	if (fd == -1)
+		return (1);
+	row_num = get_num_rows(fd);
+	map = malloc(sizeof(char *) * row_num);
+	if (!map)
 		return (0);
-	else
+	aux = get_next_line(fd);
+	int i = 0;
+	while (aux)
 	{
-		int 	fd;
-		char	**map;
-		char	*aux;
-		int		row_len;
-		
-		map = malloc(sizeof(char *) * get_num_row(fd));
-		row_len = ft_strlen(map[0]);
-		fd = open(argv[1], O_RDONLY);
+		map[i] = aux;
 		aux = get_next_line(fd);
-		int i = 0;
-		while (aux)
-		{
-			map[i] = aux;
-			aux = get_next_line(fd);
-			++i;
-		}
-		int map_value = valid_map(map, row_len, get_num_lines(fd));
-		printf("%d\n", map_value);
-		return (0);
+		++i;
 	}
+	row_len = ft_strlen(map[0]);
+	int map_value = valid_map(map, row_len, get_num_rows(fd));
+	printf("%d\n", map_value);
+	close(fd);
 	return (0);
 }

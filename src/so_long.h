@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/02 16:59:00 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:34:09 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_mapcnt
 int		map_size(char **argv);
 void	ft_free(char **map, int i);
 void	print_error(char *str);
-int		valid_map(char **map, int width, int len, int fd);
+int		valid_map(char **map, int width, int height);
 int		map_check(char **map);
 
 #endif
