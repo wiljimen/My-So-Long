@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/01 17:54:17 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:17:29 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ j = 0;
 		}
 */
 
-int	get_num_lines(int fd)
+int	get_num_rows(int fd)
 {
 	char	*map;
 	int		i;
@@ -54,15 +54,14 @@ int	get_num_lines(int fd)
 	return (i);
 }
 
-int	valid_map(char **map, int width, int len)
+int	valid_map(char **map, int width, int len, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (i < width - 1)
 	{
-		if (map[0][i] != '1'
-			|| map[get_num_lines(map)][i] != '1')
+		if (map[0][i] != '1' || map[get_num_rows(fd)][i] != '1')
 			return (1);
 		i++;
 	}
@@ -130,9 +129,10 @@ int	main(int argc, char **argv)
 		int 	fd;
 		char	**map;
 		char	*aux;
+		int		row_len;
 		
-		map = malloc(sizeof(char *) * get_num_lines(fd));
-		ft_strlen(map[0]);
+		map = malloc(sizeof(char *) * get_num_row(fd));
+		row_len = ft_strlen(map[0]);
 		fd = open(argv[1], O_RDONLY);
 		aux = get_next_line(fd);
 		int i = 0;
@@ -142,6 +142,9 @@ int	main(int argc, char **argv)
 			aux = get_next_line(fd);
 			++i;
 		}
-		
+		int map_value = valid_map(map, row_len, get_num_lines(fd));
+		printf("%d\n", map_value);
+		return (0);
 	}
+	return (0);
 }
