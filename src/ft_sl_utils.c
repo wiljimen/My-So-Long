@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:11:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/01/31 12:37:02 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:56:41 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,13 @@ void	ft_free(char **map, int i)
 		i--;
 	}
 	free(map);
-	print_error("Freeze done c:");
+	print_error("Free done c:");
+	exit(EXIT_FAILURE);
+}
+
+void	ft_error(t_data *mlx)
+{
+	print_error("Some characters are wrong, ");
+	print_error("try with another map");
+	exit(EXIT_FAILURE);
 }
