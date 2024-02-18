@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/12 17:00:59 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:40:50 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	map_rectangle(char **map, int width, int height)
 
 	i = 0;
 	if (height == 0 || (int)ft_strlen(map[0]) != width)
-	{
 		ft_free(map, height);
-	}
 	while (i < height)
 	{
 		j = 0;
@@ -30,7 +28,7 @@ void	map_rectangle(char **map, int width, int height)
 		{
 			if ((i == 0 || i == height - 1) && map[i][j] != '1'
 				&& map[i][j] != '\n')
-					ft_free(map, height);
+				ft_free(map, height);
 			else if ((j == 0 || j == width - 1) && map[i][j] != '1'
 					&& map[i][j] != '\n')
 				ft_free(map, height);
@@ -103,21 +101,19 @@ t_map	map_maker(char **argv, t_data *mapp)
 	map_saver(argv, mapp);
 	map_check(mapp);
 	map_print(mapp);
-	return(mapp->map);
+	return (mapp->map);
 }
 
-
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Error 404\n");
-		return (0);
-	}
-	t_data	*mapp;
-	
-	mapp = ft_calloc(sizeof(t_data), 1);
-	map_maker(argv, mapp);
-	system("leaks -q so_long");
-	return (0);
-}
+// int main(int argc, char **argv)
+// {
+// 	if (argc != 2)
+// 	{
+// 		printf("Error 404\n");
+// 		return (0);
+// 	}
+// 	t_data	*mapp;
+// 	mapp = ft_calloc(sizeof(t_data), 1);
+// 	map_maker(argv, mapp);
+// 	system("leaks -q so_long");
+// 	return (0);
+// }

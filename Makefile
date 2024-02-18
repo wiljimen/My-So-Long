@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/02/12 17:02:07 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/02/12 17:03:43 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -32,7 +32,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -sC $(LIBFT_DIR)
-	cp ./libft/libft.a ./src/
+	cp ./libft/libft.a .
 	$(CC) $(CFLAGS) libft.a $(OBJS) -o $(NAME)
 
 # %.o: %.c
