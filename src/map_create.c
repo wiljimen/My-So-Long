@@ -6,12 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/18 17:40:50 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:54:31 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "../libft/libft.h"
+#include "../includes/so_long.h"
 
 void	map_rectangle(char **map, int width, int height)
 {
@@ -94,6 +93,9 @@ void	map_check(t_data *mapp)
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
+	void	*mlx;
+	mlx = mlx_init();
+	
 	mapp->map.line = ft_strlen(argv[1]);
 	mapp->map.fd = open(argv[1], O_RDONLY);
 	mapp->map.row = get_num_rows(mapp->map.fd);
@@ -104,16 +106,22 @@ t_map	map_maker(char **argv, t_data *mapp)
 	return (mapp->map);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 	{
-// 		printf("Error 404\n");
-// 		return (0);
-// 	}
-// 	t_data	*mapp;
-// 	mapp = ft_calloc(sizeof(t_data), 1);
-// 	map_maker(argv, mapp);
-// 	system("leaks -q so_long");
-// 	return (0);
-// }
+int main(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		printf("Error 404\n");
+		return (0);
+	}
+	t_data	*mapp;
+	mapp = ft_calloc(sizeof(t_data), 1);
+	map_maker(argv, mapp);
+	
+	mapp->mlx = mlx_init();
+	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line, mapp->map.row, "so_long");
+	mlx_put_image_to_window(mapp->mlx, mapp->win, "../sprites/CJ-PARAO.xpm", 0, 0);
+	// img_to_window(mapp);
+	mlx_loop(mapp->mlx);
+	system("leaks -q so_long");
+	return (0);
+}

@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:11:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/13 14:44:22 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:54:59 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	print_error(char *str)
 {
