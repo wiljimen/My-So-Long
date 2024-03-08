@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/28 16:54:31 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:37:35 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	map_rectangle(char **map, int width, int height)
 
 	i = 0;
 	if (height == 0 || (int)ft_strlen(map[0]) != width)
-		ft_free(map, height);
+		ft_free(map, height, "Bad length");
 	while (i < height)
 	{
 		j = 0;
@@ -27,16 +27,15 @@ void	map_rectangle(char **map, int width, int height)
 		{
 			if ((i == 0 || i == height - 1) && map[i][j] != '1'
 				&& map[i][j] != '\n')
-				ft_free(map, height);
+				ft_free(map, height, "Bad top and bottom borders");
 			else if ((j == 0 || j == width - 1) && map[i][j] != '1'
 					&& map[i][j] != '\n')
-				ft_free(map, height);
+				ft_free(map, height, "Bad lateral borders");
 			j++;
 		}
 		i++;
 	}
 }
-
 void	map_chr_check(t_data *mapp)
 {
 	int	i;
@@ -46,7 +45,31 @@ void	map_chr_check(t_data *mapp)
 	while (mapp->map_ref[i])
 	{
 		j = 0;
-		while (mapp->map_ref[i][j] && mapp->map_ref[i][j] != '\n')
+		while (mapp->map_ref[i][j])
+		{
+			if(mapp->map_ref[i][j] != 'P' && mapp->map_ref[i][j] != 'C'
+				&& mapp->map_ref[i][j] != '1' && mapp->map_ref[i][j] != '0'
+				&& mapp->map_ref[i][j] != 'E' && mapp->map_ref[i][j] != '\n')
+				{
+				ft_free(mapp->map_ref, i, "Bad characthers");
+				}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	map_content(t_data *mapp)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	map_chr_check(mapp);
+	while (mapp->map_ref[i])
+	{
+		j = 0;
+		while (mapp->map_ref[i][j])
 		{
 			if (mapp->map_ref[i][j] == 'P')
 				mapp->mapcnt.player += 1;
@@ -54,10 +77,9 @@ void	map_chr_check(t_data *mapp)
 				mapp->mapcnt.exit += 1;
 			else if (mapp->map_ref[i][j] == 'C')
 				mapp->mapcnt.coin += 1;
-			else if (mapp->map_ref[i][j] != '1'
-				&& mapp->map_ref[i][j] != '0')
+			if (mapp->mapcnt.exit > 1 || mapp->mapcnt.player > 1)
 			{
-				ft_free(mapp->map_ref, i);
+				ft_free(mapp->map_ref, i, "More players or exit than 1");
 			}
 			j++;
 		}
@@ -67,17 +89,25 @@ void	map_chr_check(t_data *mapp)
 
 void	map_saver(char **argv, t_data *mapp)
 {
-	int	i;
+	int		i;
+	char	*aux;
+	char	*temp;
 
 	i = 0;
 	mapp->map.fd = open(argv[1], O_RDONLY);
-	mapp->map_ref[i] = get_next_line(mapp->map.fd);
-	while (mapp->map_ref[i])
+	aux = get_next_line(mapp->map.fd);
+	// printf("Aux: %s\n", aux);
+	temp = ft_calloc(ft_strlen(aux), sizeof(char *));
+	while (aux)
 	{
-		i++;
-		mapp->map_ref[i] = get_next_line(mapp->map.fd);
+		temp = ft_strjoin(temp, aux);
+		// printf("Temp: \n%s\n", temp);
+		free(aux);
+		aux = get_next_line(mapp->map.fd);
+		// printf("Aux: %s\n", aux);
 	}
-	mapp->map_ref[i] = NULL;
+	mapp->map_ref = ft_split(temp, '\n');
+	// printf("\n");
 	close(mapp->map.fd);
 }
 
@@ -88,7 +118,7 @@ void	map_check(t_data *mapp)
 	mapp->mapcnt.exit = 0;
 	mapp->map.line = ft_strlen(mapp->map_ref[0]);
 	map_rectangle(mapp->map_ref, mapp->map.line, mapp->map.row);
-	map_chr_check(mapp);
+	map_content(mapp);
 }
 
 t_map	map_maker(char **argv, t_data *mapp)
@@ -102,7 +132,8 @@ t_map	map_maker(char **argv, t_data *mapp)
 	mapp->map_ref = ft_calloc(sizeof(char *), mapp->map.row + 1);
 	map_saver(argv, mapp);
 	map_check(mapp);
-	map_print(mapp);
+	find_p(mapp);
+	// map_print(mapp);
 	return (mapp->map);
 }
 
@@ -114,13 +145,14 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	t_data	*mapp;
-	mapp = ft_calloc(sizeof(t_data), 1);
-	map_maker(argv, mapp);
 	
+	mapp = ft_calloc(sizeof(t_data), 1);
+	mapp->img = ft_calloc(1, sizeof(t_img));
+	mapp->map = map_maker(argv, mapp);
 	mapp->mlx = mlx_init();
-	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line, mapp->map.row, "so_long");
-	mlx_put_image_to_window(mapp->mlx, mapp->win, "../sprites/CJ-PARAO.xpm", 0, 0);
-	// img_to_window(mapp);
+	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52, mapp->map.row * 52, "so_long");
+	img_to_window(mapp);
+	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);
 	system("leaks -q so_long");
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:11:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/28 14:54:59 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:18:46 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_error(char *str)
 	exit(0);
 }
 
-void	ft_free(char **map, int i)
+void	ft_free(char **map, int i, char *str)
 {
 	while (i >= 0)
 	{
@@ -26,7 +26,7 @@ void	ft_free(char **map, int i)
 		i--;
 	}
 	free(map);
-	print_error("Free done c:");
+	print_error(str);
 	exit(EXIT_FAILURE);
 }
 

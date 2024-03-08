@@ -6,85 +6,106 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/28 16:41:28 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:45:39 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_left_move(t_data *P)
+void	ft_left_move(t_data *p)
 {
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x - 1] == '1')
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x - 1] == '1')
 		return ;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x - 1] == 'C')
-		P->mapcnt.coin--;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x - 1] == 'E'
-		&& P->mapcnt.coin != 0)
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x - 1] == 'C')
+		p->mapcnt.coin--;
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x - 1] == 'E'
+		&& p->mapcnt.coin != 0)
 		return ;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x - 1] == 'E'
-		&& P->mapcnt.coin == 0)
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x - 1] == 'E'
+		&& p->mapcnt.coin == 0)
+	{
+		printf("Mission Passed\n+Respect");
 		exit(EXIT_SUCCESS);
-	P->ppl.moves++;
-	P->ppl.player_x--;
-	P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] = 'P';
-	P->map_ref[P->ppl.player_y][P->ppl.player_x] = '0';
+	}
+	p->ppl.moves++;
+	p->ppl.player_x--;
+	p->map_ref[p->ppl.player_y][p->ppl.player_x] = 'P';
+	p->map_ref[p->ppl.player_y][p->ppl.player_x + 1] = '0';
+	printf("Moves: %d\n", p->ppl.moves);
+	img_to_window(p);
 	return ;
 }
 
-void	ft_up_move(t_data *P)
+void	ft_up_move(t_data *p)
 {
-	if (P->map_ref[P->ppl.player_y - 1][P->ppl.player_x] == '1')
+	
+	if (p->map_ref[p->ppl.player_y - 1][p->ppl.player_x] == '1')
 		return ;
-	if (P->map_ref[P->ppl.player_y - 1][P->ppl.player_x] == 'C')
-		P->mapcnt.coin--;
-	if (P->map_ref[P->ppl.player_y - 1][P->ppl.player_x] == 'E'
-		&& P->mapcnt.coin != 0)
+	else if (p->map_ref[p->ppl.player_y - 1][p->ppl.player_x] == 'C')
+		p->mapcnt.coin--;
+	else if (p->map_ref[p->ppl.player_y - 1][p->ppl.player_x] == 'E'
+		&& p->mapcnt.coin != 0)
 		return ;
-	if (P->map_ref[P->ppl.player_y - 1][P->ppl.player_x] == 'E'
-		&& P->mapcnt.coin == 0)
+	else if (p->map_ref[p->ppl.player_y - 1][p->ppl.player_x] == 'E'
+		&& p->mapcnt.coin == 0)
+	{
+		printf("Mission Passed\n+Respect");
 		exit(EXIT_SUCCESS);
-	P->ppl.moves++;
-	P->ppl.player_y--;
-	P->map_ref[P->ppl.player_y - 1][P->ppl.player_x] = 'P';
-	P->map_ref[P->ppl.player_y][P->ppl.player_x] = '0';
+	}
+	p->ppl.moves++;
+	p->ppl.player_y--;
+	p->map_ref[p->ppl.player_y][p->ppl.player_x] = 'P';
+	p->map_ref[p->ppl.player_y + 1][p->ppl.player_x] = '0';
+	printf("Moves: %d\n", p->ppl.moves);
+	img_to_window(p);
 	return ;
 }
 
-void	ft_down_move(t_data *P)
+void	ft_down_move(t_data *p)
 {
-	if (P->map_ref[P->ppl.player_y + 1][P->ppl.player_x] == '1')
+	if (p->map_ref[p->ppl.player_y + 1][p->ppl.player_x] == '1')
 		return ;
-	if (P->map_ref[P->ppl.player_y + 1][P->ppl.player_x] == 'C')
-		P->mapcnt.coin--;
-	if (P->map_ref[P->ppl.player_y + 1][P->ppl.player_x] == 'E'
-		&& P->mapcnt.coin != 0)
+	if (p->map_ref[p->ppl.player_y + 1][p->ppl.player_x] == 'C')
+		p->mapcnt.coin--;
+	if (p->map_ref[p->ppl.player_y + 1][p->ppl.player_x] == 'E'
+		&& p->mapcnt.coin != 0)
 		return ;
-	if (P->map_ref[P->ppl.player_y + 1][P->ppl.player_x] == 'E'
-		&& P->mapcnt.coin == 0)
+	if (p->map_ref[p->ppl.player_y + 1][p->ppl.player_x] == 'E'
+		&& p->mapcnt.coin == 0)
+	{
+		printf("Mission Passed\n+Respect");
 		exit(EXIT_SUCCESS);
-	P->ppl.moves++;
-	P->ppl.player_y++;
-	P->map_ref[P->ppl.player_y + 1][P->ppl.player_x] = 'P';
-	P->map_ref[P->ppl.player_y][P->ppl.player_x] = '0';
+	}
+	p->ppl.moves++;
+	p->ppl.player_y++;
+	p->map_ref[p->ppl.player_y][p->ppl.player_x] = 'P';
+	p->map_ref[p->ppl.player_y - 1][p->ppl.player_x] = '0';
+	printf("Moves: %d\n", p->ppl.moves);
+	img_to_window(p);
 	return ;
 }
 
-void	ft_right_move(t_data *P)
+void	ft_right_move(t_data *p)
 {
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] == '1')
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x + 1] == '1')
 		return ;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] == 'C')
-		P->mapcnt.coin--;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] == 'E'
-		&& P->mapcnt.coin != 0)
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x + 1] == 'C')
+		p->mapcnt.coin--;
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x + 1] == 'E'
+		&& p->mapcnt.coin != 0)
 		return ;
-	if (P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] == 'E'
-		&& P->mapcnt.coin == 0)
+	if (p->map_ref[p->ppl.player_y][p->ppl.player_x + 1] == 'E'
+		&& p->mapcnt.coin == 0)
+	{
+		printf("Mission Passed\n+Respect");
 		exit(EXIT_SUCCESS);
-	P->ppl.moves++;
-	P->ppl.player_x++;
-	P->map_ref[P->ppl.player_y][P->ppl.player_x + 1] = 'P';
-	P->map_ref[P->ppl.player_y][P->ppl.player_x] = '0';
+	}
+	p->ppl.moves++;
+	p->ppl.player_x++;
+	p->map_ref[p->ppl.player_y][p->ppl.player_x] = 'P';
+	p->map_ref[p->ppl.player_y][p->ppl.player_x - 1] = '0';
+	printf("Moves: %d\n", p->ppl.moves);
+	img_to_window(p);
 	return ;
 }
 
