@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/08 16:18:41 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:17:17 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_mapcnt
 	int	player;
 	int	coin;
 	int	exit;
+	int coin_left;
 }		t_mapcnt;
 
 // All player movements, including how many moves
@@ -40,8 +41,8 @@ typedef struct s_mapcnt
 typedef struct s_ppl
 {
 	int	moves;
-	int	player_y;
-	int	player_x;
+	int	py;
+	int	px;
 }		t_ppl;
 
 // All paths
@@ -62,6 +63,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	char		**map_ref;
+	char		**map_cpy;
 	t_map		map;
 	t_mapcnt	mapcnt;
 	t_ppl		ppl;
@@ -96,6 +98,10 @@ void	map_content(t_data *mapp);
 void	map_chr_check(t_data *mapp);
 void	map_saver(char **argv, t_data *mapp);
 void	map_check(t_data *mapp);
+void	ft_coin_left(t_data *mapp);
+void	floodfill_map_coin(t_data *mapp, int y, int x);
+// void	floodfill_map_exit(t_data *mapp, int y, int x);
+void	valid_exit(t_data *mapp, int y, int x);
 void	map_print(t_data *mapp);
 t_map	map_maker(char **argv, t_data *mapp);
 void	ft_left_move(t_data *P);

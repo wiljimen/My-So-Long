@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/08 16:37:35 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:42:11 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void	map_content(t_data *mapp)
 			else if (mapp->map_ref[i][j] == 'E')
 				mapp->mapcnt.exit += 1;
 			else if (mapp->map_ref[i][j] == 'C')
-				mapp->mapcnt.coin += 1;
-			if (mapp->mapcnt.exit > 1 || mapp->mapcnt.player > 1)
 			{
-				ft_free(mapp->map_ref, i, "More players or exit than 1");
+				mapp->mapcnt.coin += 1;
 			}
+			if (mapp->mapcnt.exit > 1 || mapp->mapcnt.player > 1)
+				ft_free(mapp->map_ref, i, "More players or exit than 1");
 			j++;
 		}
 		i++;
@@ -96,18 +96,15 @@ void	map_saver(char **argv, t_data *mapp)
 	i = 0;
 	mapp->map.fd = open(argv[1], O_RDONLY);
 	aux = get_next_line(mapp->map.fd);
-	// printf("Aux: %s\n", aux);
 	temp = ft_calloc(ft_strlen(aux), sizeof(char *));
 	while (aux)
 	{
 		temp = ft_strjoin(temp, aux);
-		// printf("Temp: \n%s\n", temp);
 		free(aux);
 		aux = get_next_line(mapp->map.fd);
-		// printf("Aux: %s\n", aux);
 	}
 	mapp->map_ref = ft_split(temp, '\n');
-	// printf("\n");
+	mapp->map_cpy = ft_split(temp, '\n');
 	close(mapp->map.fd);
 }
 
@@ -119,7 +116,13 @@ void	map_check(t_data *mapp)
 	mapp->map.line = ft_strlen(mapp->map_ref[0]);
 	map_rectangle(mapp->map_ref, mapp->map.line, mapp->map.row);
 	map_content(mapp);
+	find_p(mapp);
+	valid_exit(mapp, mapp->ppl.py, mapp->ppl.px);
 }
+
+// void ft_check_args(char **argv)
+// {
+// }
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
@@ -133,7 +136,6 @@ t_map	map_maker(char **argv, t_data *mapp)
 	map_saver(argv, mapp);
 	map_check(mapp);
 	find_p(mapp);
-	// map_print(mapp);
 	return (mapp->map);
 }
 

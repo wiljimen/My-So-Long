@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:58:14 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/07 18:06:34 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:44:05 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <ctype.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -83,5 +84,18 @@ char	*ft_strjoin_aux(char const *s1, const char *s2);
 char	*ft_auxwrite(int fd, char *aux);
 char	*get_next_line(int fd);
 char	*ft_strcprinter(char **s);
+
+// FT_PRINTF PART
+
+int		ft_putnbr(int nb);
+int		ft_putunbr(unsigned int nb);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_hexa_lower(unsigned int numx);
+int		ft_hexa_upper(unsigned int numbX);
+int		ft_ptr_aux(unsigned long nptr);
+int		ft_put_ptr(int *ptr);
+int		ft_printf_counter(va_list args, const char type);
+int		ft_printf(const char *str, ...);
 
 #endif

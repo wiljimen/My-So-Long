@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/03/08 16:19:30 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/03/15 15:04:38 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 LIBFT_DIR = libft/
 
 SRCS = src/ft_sl_utils.c src/map_create.c src/map_image.c src/player_moves.c \
-	src/hooks.c
+	src/hooks.c src/map_path.c
 
 OBJS = $(SRCS:.c=.o)
 	

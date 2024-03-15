@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/07 20:25:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:16:10 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	fill_bckgnd(t_data *mapp)
 		j = 0;
 		while (mapp->map_ref[i][j])
 		{
-			mlx_put_image_to_window(mapp->mlx, mapp->win, 
-			mapp->img->background, j * 52, 
-			i * 52);
+			mlx_put_image_to_window(mapp->mlx, mapp->win,
+				mapp->img->background, j * 52, i * 52);
 			j++;
 		}
 		i++;
@@ -44,22 +43,25 @@ t_img	*image_put(t_data *mapp)
 			"./sprites/exit-close.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/CRATE.xpm", &mapp->img->width, &mapp->img->height);
-	return(mapp->img);
+	if (mapp->mapcnt.coin == 0)
+		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
+			"./sprites/exit-open.xpm", &mapp->img->width, &mapp->img->height);
+	return (mapp->img);
 }
 
 void	which_image(t_data *mapp, int i, int j)
-{	
+{
 	if (mapp->map_ref[i][j] == 'P')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->character, 
-				j * 52, i * 52);
+		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->character,
+			j * 52, i * 52);
 	else if (mapp->map_ref[i][j] == 'E')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->exit, 
+		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->exit,
 			j * 52, i * 52);
 	else if (mapp->map_ref[i][j] == 'C')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->coin, 
+		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->coin,
 			j * 52, i * 52);
 	else if (mapp->map_ref[i][j] == '1')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->wall, 
+		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->wall,
 			j * 52, i * 52);
 	else if (mapp->map_ref[i][j] == '0')
 		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->background,
@@ -70,6 +72,7 @@ void	img_to_window(t_data *mapp)
 {
 	int	i;
 	int	j;
+
 	i = 0;
 	mapp->img = image_put(mapp);
 	fill_bckgnd(mapp);
@@ -78,7 +81,7 @@ void	img_to_window(t_data *mapp)
 		j = 0;
 		while (mapp->map_ref[i][j])
 		{
- 			which_image(mapp, i, j);
+			which_image(mapp, i, j);
 			j++;
 		}
 		i++;
