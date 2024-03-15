@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:48:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/08 16:44:32 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:00:32 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	key_hook(int keycode, t_data *mapp)
 		ft_right_move(mapp);
 	if (keycode == KEY_ESC)
 	{
-		printf("Mission Failed\n");
+		ft_printf("Mission Failed\n");
 		exit(EXIT_SUCCESS);
 	}
-	// printf("Moves: %d\n", mapp->ppl.moves);
 	return (0);
 }

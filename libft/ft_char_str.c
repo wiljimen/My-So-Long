@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 {
@@ -38,20 +38,4 @@ int	ft_putstr(char *str)
 		return (i);
 	}
 }
-/*
-#include <stdio.h>
 
-int	main(void)
-{
-	char s;
-	char *str;
-
-	s = 's';
-	str = "Hola";
-	ft_putchar(s);
-	printf("\n%c\n", s);
-	ft_putstr(str);
-	printf("\n%s\n", str);
-
-	return (0);
-}*/

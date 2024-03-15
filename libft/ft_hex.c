@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_hexa_lower(unsigned int numx)
 {
@@ -52,19 +51,4 @@ int	ft_hexa_upper(unsigned int numbX)
 	}
 	return (i);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
-{
-	unsigned int n = 123456;;
-
-	ft_hexa_lower(n);
-	ft_putchar('\n');
-	printf("%x\n\n", n);
-	ft_hexa_upper(n);
-	ft_putchar('\n');
-	printf("%X\n", n);
-
-	return (0);
-}*/

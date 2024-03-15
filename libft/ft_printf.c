@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiljimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:04:57 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/12/18 15:01:51 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:32:01 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_printf_counter(va_list args, const char type)
 {
@@ -61,22 +61,3 @@ int	ft_printf(const char *str, ...)
 	return (counter);
 }
 
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char c = 'S';
-	char *str = "Hola";
-	int	n = 7;
-	int nnegative = -7;
-	unsigned int num = 123456;
-	int *ptr = &n;
-	
-	
-	ft_printf("Mi Printf: c: %c %%: %% s: %s i: %i d: %d u: %u
-	x: %x X: %X p: %p\n\n", c, str, n, nnegative, num, num, num, ptr);
-	printf("Printf Original: c: %c %%: %% s: %s i: %i d: %d u: %u
-	x: %x X: %X p: %p\n", c, str, n, nnegative, num, num, num, ptr);
-	ft_printf("%d", INT_MIN);
-	return(0);
-}*/

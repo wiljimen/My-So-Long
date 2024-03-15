@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiljimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 18:19:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/12/18 14:14:46 by wiljimen         ###   ########.fr       */
+/*   Created: 2024/03/15 17:33:16 by wiljimen          #+#    #+#             */
+/*   Updated: 2024/03/15 17:33:16 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putnbr(int nb)
 {
@@ -54,12 +54,3 @@ int	ft_putunbr(unsigned int nb)
 		i += ft_putchar(nb + 48);
 	return (i);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{	
-	int n = 200;
-	
-	printf("\n%d", ft_putnbr(n));
-}*/

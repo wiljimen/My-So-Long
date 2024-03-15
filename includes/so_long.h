@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 16:17:17 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:14:13 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_mapcnt
 	int	coin;
 	int	exit;
 	int coin_left;
+	int	exit_count;
 }		t_mapcnt;
 
 // All player movements, including how many moves
@@ -100,7 +101,6 @@ void	map_saver(char **argv, t_data *mapp);
 void	map_check(t_data *mapp);
 void	ft_coin_left(t_data *mapp);
 void	floodfill_map_coin(t_data *mapp, int y, int x);
-// void	floodfill_map_exit(t_data *mapp, int y, int x);
 void	valid_exit(t_data *mapp, int y, int x);
 void	map_print(t_data *mapp);
 t_map	map_maker(char **argv, t_data *mapp);
@@ -111,7 +111,7 @@ void	ft_right_move(t_data *P);
 t_img	*image_put(t_data *mapp);
 void	which_image(t_data *mapp, int i, int j);
 void	img_to_window(t_data *mapp);
-// void	fill_bckgnd(t_data *mapp);
+void	fill_bckgnd(t_data *mapp);
 void	find_p(t_data *mapp);
 int		key_hook(int keycode, t_data *mapp);
 

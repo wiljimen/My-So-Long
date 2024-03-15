@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_ptr_aux(unsigned long nptr)
 {
@@ -42,18 +42,3 @@ int	ft_put_ptr(int *ptr)
 	i += ft_ptr_aux((unsigned long)ptr);
 	return (i);
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	int	n;
-	int	*ptr;
-
-	n = 123456;
-	ptr = &n;
-	ft_put_ptr(ptr);
-	printf("\n");
-	printf("%p", ptr);
-}*/

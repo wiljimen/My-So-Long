@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 16:42:11 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:57:33 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	map_rectangle(char **map, int width, int height)
 	int	j;
 
 	i = 0;
-	if (height == 0 || (int)ft_strlen(map[0]) != width)
-		ft_free(map, height, "Bad length");
+	// if (height == 0 || (int)ft_strlen(map[0]) != width)
+	// 	ft_free(map, height, "Bad length");
 	while (i < height)
 	{
 		j = 0;
@@ -27,15 +27,18 @@ void	map_rectangle(char **map, int width, int height)
 		{
 			if ((i == 0 || i == height - 1) && map[i][j] != '1'
 				&& map[i][j] != '\n')
-				ft_free(map, height, "Bad top and bottom borders");
+				ft_free(map, height, "Bad top or bottom borders");
 			else if ((j == 0 || j == width - 1) && map[i][j] != '1'
 					&& map[i][j] != '\n')
 				ft_free(map, height, "Bad lateral borders");
 			j++;
 		}
+		if ((int)ft_strlen(map[0]) != (int)ft_strlen(map[i]))
+			ft_free(map, height, "Map isn't rectangle");
 		i++;
 	}
 }
+
 void	map_chr_check(t_data *mapp)
 {
 	int	i;
@@ -76,15 +79,15 @@ void	map_content(t_data *mapp)
 			else if (mapp->map_ref[i][j] == 'E')
 				mapp->mapcnt.exit += 1;
 			else if (mapp->map_ref[i][j] == 'C')
-			{
 				mapp->mapcnt.coin += 1;
-			}
-			if (mapp->mapcnt.exit > 1 || mapp->mapcnt.player > 1)
-				ft_free(mapp->map_ref, i, "More players or exit than 1");
 			j++;
 		}
 		i++;
 	}
+	if (mapp->mapcnt.exit != 1 || mapp->mapcnt.player != 1)
+		ft_free(mapp->map_ref, i, "Player or Exit not equal than 1");
+	if (mapp->mapcnt.coin < 1)
+		ft_free(mapp->map_ref, i, "Coins less than 1");
 }
 
 void	map_saver(char **argv, t_data *mapp)
@@ -119,10 +122,6 @@ void	map_check(t_data *mapp)
 	find_p(mapp);
 	valid_exit(mapp, mapp->ppl.py, mapp->ppl.px);
 }
-
-// void ft_check_args(char **argv)
-// {
-// }
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
