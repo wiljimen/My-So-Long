@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:08:34 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:31:03 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_img	*image_put(t_data *mapp)
 	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->character = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cjhd.xpm", &mapp->img->width, &mapp->img->height);
+			"./sprites/cj.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/Money.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,

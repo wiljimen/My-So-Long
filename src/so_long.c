@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:20:18 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:10:41 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_args(int argc, char **argv)
 		print_error("Bad extension, try with a .ber file");
 }
 
-/* int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	*mapp;
 
@@ -62,8 +62,9 @@ void	check_args(int argc, char **argv)
 	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
 			mapp->map.row * 52, "so_long");
 	img_to_window(mapp);
+	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);
 	system("leaks -q so_long");
 	return (0);
-} */
+}

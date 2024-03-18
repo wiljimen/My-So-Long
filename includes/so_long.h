@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:17:47 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:10:19 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_data
 	t_img		*img;
 }				t_data;
 
-//All Sprites
+//All Sprites 
 # define PLAYER "./sprites/CJ-PARAO.xpm";
 # define FLOOR "./sprites/FLOOR.xpm";
 # define CRATE "./sprite/CRATE.xpm";
@@ -88,7 +88,13 @@ typedef struct s_data
 #define KEY_LEFT 123
 #define KEY_DOWN 125
 #define KEY_RIGHT 124
-#define ON_DESTROY 17
+#define KEY_CLOSE_WIN 17
+
+// All Colors
+
+#define RED  "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define YELLOW "\033[0;33m"
 
 void	ft_free(char **map, int i, char *str);
 void	print_error(char *str);
@@ -115,5 +121,6 @@ void	img_to_window(t_data *mapp);
 void	fill_bckgnd(t_data *mapp);
 void	find_p(t_data *mapp);
 int		key_hook(int keycode, t_data *mapp);
+int		x_pressed(t_data *mapp);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:48:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:05:32 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:11:41 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 
 int	key_hook(int keycode, t_data *mapp)
 {
@@ -25,7 +26,15 @@ int	key_hook(int keycode, t_data *mapp)
 	if (keycode == KEY_ESC)
 	{
 		ft_printf("Mission Failed\n");
+		mlx_destroy_window(mapp->mlx, mapp->win);
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
+}
+
+int	x_pressed(t_data *mapp)
+{
+	ft_printf("Mission Failed\n");
+	mlx_destroy_window(mapp->mlx, mapp->win);
+	exit(EXIT_SUCCESS);
 }
