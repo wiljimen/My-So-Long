@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 19:14:13 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:17:47 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "libft.h"
 
 // Map size
 typedef struct s_map
@@ -94,6 +94,7 @@ void	ft_free(char **map, int i, char *str);
 void	print_error(char *str);
 void	ft_error(t_data *mlx);
 int		get_num_rows(int fd);
+size_t	max_len(char *s1, char *s2);
 void	map_rectangle(char **map, int width, int height);
 void	map_content(t_data *mapp);
 void	map_chr_check(t_data *mapp);

@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:53:41 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/09/22 14:21:20 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:15:43 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

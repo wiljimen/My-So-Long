@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:04:57 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 17:32:01 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:14:50 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_printf_counter(va_list args, const char type)
 {
@@ -60,4 +60,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (counter);
 }
-

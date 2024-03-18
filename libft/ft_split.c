@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:13:20 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/07 16:10:00 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:15:17 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	**mallocsize(char const *s, char c)
 {

@@ -6,10 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:38:06 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/10/05 18:31:16 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:12:37 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../includes/libft.h"
 
 int	ft_atoi(const char *str)
 {

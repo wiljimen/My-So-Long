@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 16:40:33 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:09:13 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_left_move(t_data *p)
 
 void	ft_up_move(t_data *p)
 {
-	
 	if (p->map_ref[p->ppl.py - 1][p->ppl.px] == '1')
 		return ;
 	else if (p->map_ref[p->ppl.py - 1][p->ppl.px] == 'C')

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_hexa_lower(unsigned int numx)
 {
@@ -51,4 +51,3 @@ int	ft_hexa_upper(unsigned int numbX)
 	}
 	return (i);
 }
-

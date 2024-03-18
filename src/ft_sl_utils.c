@@ -6,11 +6,19 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:11:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/13 16:16:14 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:05:17 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+size_t	max_len(char *s1, char *s2)
+{
+	if (ft_strlen(s1) > ft_strlen(s2))
+		return (ft_strlen(s1));
+	else
+		return (ft_strlen(s2));
+}
 
 void	print_error(char *str)
 {
@@ -26,7 +34,7 @@ void	ft_free(char **map, int i, char *str)
 		i--;
 	}
 	free(map);
-	print_error(str);
+	ft_putstr_fd(str, 1);
 	exit(EXIT_FAILURE);
 }
 

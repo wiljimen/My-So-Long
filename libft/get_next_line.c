@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:32:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/12 15:21:51 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:17:01 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_auxwrite(int fd, char *aux)
 {

@@ -6,10 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:58:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/09/25 15:15:52 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:16:03 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../includes/libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

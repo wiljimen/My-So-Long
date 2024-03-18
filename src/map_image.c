@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/15 15:16:10 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:08:34 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ t_img	*image_put(t_data *mapp)
 			"./sprites/CRATE.xpm", &mapp->img->width, &mapp->img->height);
 	if (mapp->mapcnt.coin == 0)
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/exit-open.xpm", &mapp->img->width, &mapp->img->height);
+				"./sprites/exit-open.xpm",
+				&mapp->img->width, &mapp->img->height);
 	return (mapp->img);
 }
 

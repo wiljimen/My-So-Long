@@ -6,10 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:07:58 by wiljimen          #+#    #+#             */
-/*   Updated: 2023/09/25 16:52:28 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:16:47 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../includes/libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

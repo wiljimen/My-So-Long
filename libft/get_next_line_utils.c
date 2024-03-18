@@ -6,11 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:33:56 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/02/12 14:57:29 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:16:58 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlen_aux(const char *s)
 {
