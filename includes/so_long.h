@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 19:10:19 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:16:00 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_mapcnt
 	int	coin;
 	int	exit;
 	int coin_left;
+	int	enemy;
 	int	exit_count;
 }		t_mapcnt;
 
@@ -50,10 +51,18 @@ typedef struct s_ppl
 typedef struct s_img
 {
 	void	*character;
+	void	*cjright;
+	void	*cjjump;
+	void	*cjcrouch;
+	void	*cj1right;
+	void	*cjleft;
+	void	*cj1left;
 	void	*coin;
 	void	*exit;
 	void	*wall;
 	void	*background;
+	void	*enemyr;
+	void	*enemyl;
 	int		width;
 	int		height;
 }			t_img;
@@ -90,13 +99,8 @@ typedef struct s_data
 #define KEY_RIGHT 124
 #define KEY_CLOSE_WIN 17
 
-// All Colors
-
-#define RED  "\033[0;31m"
-#define GREEN "\033[0;32m"
-#define YELLOW "\033[0;33m"
-
-void	ft_free(char **map, int i, char *str);
+//All functions needed
+void	ft_free(char **map, char *str);
 void	print_error(char *str);
 void	ft_error(t_data *mlx);
 int		get_num_rows(int fd);
@@ -117,10 +121,20 @@ void	ft_down_move(t_data *P);
 void	ft_right_move(t_data *P);
 t_img	*image_put(t_data *mapp);
 void	which_image(t_data *mapp, int i, int j);
+int		random_num(void);
 void	img_to_window(t_data *mapp);
 void	fill_bckgnd(t_data *mapp);
 void	find_p(t_data *mapp);
 int		key_hook(int keycode, t_data *mapp);
 int		x_pressed(t_data *mapp);
+void	ft_put_img(t_data *map, int y, int x, void *file);
+
+// All Bonus functions
+
+void	moves_counter_img(t_data *mapp);
+t_img	*player_sprites(t_data *mapp);
+void	police_loop(t_data *mapp);
+void	animate_police_loop(t_data *mapp);
+void 	animate_police(t_data *mapp, int y, int x);
 
 #endif

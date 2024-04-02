@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/19 13:37:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:05:23 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
@@ -61,9 +61,11 @@ int	main(int argc, char **argv)
 	mapp->mlx = mlx_init();
 	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
 			mapp->map.row * 52, "so_long");
-	img_to_window(mapp);
+	img_to_window(mapp); 
 	ft_printf("Moves: %d\n", mapp->ppl.moves);
+	moves_counter_img(mapp);
 	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
+	// mlx_loop_hook(mapp->mlx, (void *)animate_police, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);
 	system("leaks -q so_long");

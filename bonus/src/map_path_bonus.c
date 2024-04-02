@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_path.c                                         :+:      :+:    :+:   */
+/*   map_path_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:51:25 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/21 18:18:09 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:17:36 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	map_saver(char **argv, t_data *mapp)
 {
@@ -48,7 +48,7 @@ void	ft_coin_left(t_data *mapp)
 		{
 			if (mapp->map_cpy[i][j] == 'C')
 				mapp->mapcnt.coin_left++;
-			if (mapp->map_cpy[i][j] == 'E')
+			else if (mapp->map_cpy[i][j] == 'E')
 				mapp->mapcnt.exit_count++;
 			j++;
 		}
@@ -58,12 +58,12 @@ void	ft_coin_left(t_data *mapp)
 
 void	floodfill_map_coin(t_data *mapp, int y, int x)
 {
-	ft_coin_left(mapp);
-	if (mapp->map_cpy[y][x] == '1' || mapp->map_cpy[y][x] == 'X'
-		|| (mapp->map_cpy[y][x] == 'E' && mapp->mapcnt.coin_left > 0))
+	if (mapp->map_cpy[y][x] == '1' || mapp->map_cpy[y][x] == 'X')
 		return ;
 	if (mapp->map_cpy[y][x] == 'C')
 		mapp->mapcnt.coin_left--;
+	if (mapp->map_cpy[y][x] == 'E')
+		mapp->mapcnt.exit_count--;
 	mapp->map_cpy[y][x] = 'X';
 	floodfill_map_coin(mapp, y, x + 1);
 	floodfill_map_coin(mapp, y + 1, x);
@@ -73,8 +73,9 @@ void	floodfill_map_coin(t_data *mapp, int y, int x)
 
 void	valid_exit(t_data *mapp, int y, int x)
 {
+	ft_coin_left(mapp);
 	floodfill_map_coin(mapp, y, x);
-	if (mapp->mapcnt.coin_left > 0 || mapp->mapcnt.exit_count == 0)
+	if (mapp->mapcnt.coin_left > 0 || mapp->mapcnt.exit_count > 0)
 	{
 		ft_free(mapp->map_cpy, "No valid path");
 		exit(EXIT_FAILURE);
