@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 15:06:24 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:38:47 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ bool	ft_is_readable(char *file)
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
-	void	*mlx;
-
-	mlx = mlx_init();
 	mapp->map.line = ft_strlen(argv[1]);
 	mapp->map.fd = open(argv[1], O_RDONLY);
 	mapp->map.row = get_num_rows(mapp->map.fd);
@@ -70,7 +67,7 @@ int	main(int argc, char **argv)
 {
 	check_args(argc, argv);
 	t_data	*mapp;
-
+	
 	mapp = ft_calloc(sizeof(t_data), 1);
 	mapp->img = ft_calloc(1, sizeof(t_img));
 	mapp->map = map_maker(argv, mapp);

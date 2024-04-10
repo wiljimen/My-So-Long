@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/09 13:20:26 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:07:09 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ void	ft_put_img(t_data *map, int y, int x, void *file);
 void	ft_moves(t_data *p, int y, int x);
 void	moves_counter_img(t_data *mapp);
 bool	ft_is_readable(char *file);
+void	ft_protect(char **map);
 
 #endif

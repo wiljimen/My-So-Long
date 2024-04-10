@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:51:25 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 14:56:25 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:08:10 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,34 @@
 
 void map_saver(char **argv, t_data *mapp)
 {
-    char *aux;
-    char *temp;
+    char	*aux;
+    char	*temp;
+	char	*temp2;
 
     mapp->map.fd = open(argv[1], O_RDONLY);
+	if (mapp->map.fd < 0)
+		return ;
     aux = get_next_line(mapp->map.fd);
     if (!aux)
     {
-        if (aux)
-            free(aux);
-        close(mapp->map.fd);
-        print_error("Invalid or empty map");
+        (close(mapp->map.fd), print_error("Invalid or empty map"));
         return ;
     }
-    temp = ft_calloc(ft_strlen(aux), sizeof(char *));
 	while (aux)
 	{
+		temp2 = temp;
 		temp = ft_strjoin(temp, aux);
-		free(aux);
+		if (!temp)
+		{
+			(free(aux), free(temp2));
+			return ;
+		}
+		(free(temp2), free(aux));
 		aux = get_next_line(mapp->map.fd);
 	}
 	mapp->map_ref = ft_split(temp, '\n');
 	mapp->map_cpy = ft_split(temp, '\n');
-	close(mapp->map.fd);
+	(free(temp), close(mapp->map.fd));
 }
 
 void	ft_coin_left(t_data *mapp)

@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/04/10 15:06:41 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/04/10 15:27:18 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CLEAR	=	\033[0m
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM = rm -f
 
@@ -27,7 +27,7 @@ MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 LIBFT_DIR = libft/
 
 SRCS = src/ft_sl_utils.c src/map_create.c src/map_image.c src/player_moves.c \
-		src/hooks.c src/map_path.c src/so_long.c
+		src/hooks.c src/map_path.c src/so_long.c src/solve_errors.c
 
 
 OBJS = $(SRCS:.c=.o)

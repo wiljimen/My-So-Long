@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 15:05:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:33:58 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ void	map_check(t_data *mapp)
 	mapp->mapcnt.coin = 0;
 	mapp->mapcnt.exit = 0;
 	mapp->mapcnt.enemy = 0;
-	// if (ft_is_readable(mapp->map_ref[0]) == false)
-	// 	print_error("Empty or invalid map\n");
 	mapp->map.line = ft_strlen(mapp->map_ref[0]);
 	map_rectangle(mapp->map_ref, mapp->map.line, mapp->map.row);
 	map_chr_check(mapp);

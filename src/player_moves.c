@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/08 13:21:19 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:28:03 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_left_move(t_data *p)
 	else if (p->map_ref[p->ppl.py][p->ppl.px - 1] == 'E'
 		&& p->mapcnt.coin == 0)
 	{
+		p->ppl.moves++;
+		ft_printf("Moves: %d\n", p->ppl.moves);
 		ft_putstr_fd("Mission Passed\n+Respect", 1);
 		exit(EXIT_SUCCESS);
 	}
@@ -50,6 +52,8 @@ void	ft_up_move(t_data *p)
 	else if (p->map_ref[p->ppl.py - 1][p->ppl.px] == 'E'
 		&& p->mapcnt.coin == 0)
 	{
+		p->ppl.moves++;
+		ft_printf("Moves: %d\n", p->ppl.moves);
 		ft_putstr_fd("Mission Passed\n+Respect", 1);
 		exit(EXIT_SUCCESS);
 	}
@@ -77,6 +81,8 @@ void	ft_down_move(t_data *p)
 	if (p->map_ref[p->ppl.py + 1][p->ppl.px] == 'E'
 		&& p->mapcnt.coin == 0)
 	{
+		p->ppl.moves++;
+		ft_printf("Moves: %d\n", p->ppl.moves);
 		ft_putstr_fd("Mission Passed\n+Respect", 1);
 		exit(EXIT_SUCCESS);
 	}
@@ -104,6 +110,8 @@ void	ft_right_move(t_data *p)
 	if (p->map_ref[p->ppl.py][p->ppl.px + 1] == 'E'
 		&& p->mapcnt.coin == 0)
 	{
+		p->ppl.moves++;
+		ft_printf("Moves: %d\n", p->ppl.moves);
 		ft_putstr_fd("Mission Passed\n+Respect", 1);
 		exit(EXIT_SUCCESS);
 	}

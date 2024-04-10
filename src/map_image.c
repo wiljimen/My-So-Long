@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/08 12:32:39 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:56:08 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	moves_counter_img(t_data *mapp)
 	moves = ft_itoa(mapp->ppl.moves);
 	mlx_string_put(mapp->mlx, mapp->win, 10, 20, 0x000000, "Moves:");
 	mlx_string_put(mapp->mlx, mapp->win, 60, 20, 0x000000, moves);
+	free(moves);
 }
