@@ -6,11 +6,25 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/19 13:37:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:06:24 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+bool	ft_is_readable(char *file)
+{
+	int	fd;
+	int	flag;
+
+	fd = open(file, O_RDONLY);
+	if (read(fd, 0, 0) < 0)
+		flag = false;
+	else
+		flag = true;
+	close(fd);
+	return (flag);
+}
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
@@ -35,6 +49,8 @@ void	check_args(int argc, char **argv)
 		print_error("Error, not map found");
 	if (argc != 2)
 		print_error("More or less arguments than 2");
+	if (ft_is_readable(argv[1]) == false)
+		print_error("Empty file or not readable");
 	if (ft_strrchr(argv[1], '.'))
 	{
 		ber = ft_strnstr(argv[1], ".ber", ft_strlen(argv[1]));
@@ -52,9 +68,9 @@ void	check_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	check_args(argc, argv);
 	t_data	*mapp;
 
-	check_args(argc, argv);
 	mapp = ft_calloc(sizeof(t_data), 1);
 	mapp->img = ft_calloc(1, sizeof(t_img));
 	mapp->map = map_maker(argv, mapp);
@@ -63,6 +79,7 @@ int	main(int argc, char **argv)
 			mapp->map.row * 52, "so_long");
 	img_to_window(mapp);
 	ft_printf("Moves: %d\n", mapp->ppl.moves);
+	moves_counter_img(mapp);
 	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);

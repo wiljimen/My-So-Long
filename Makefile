@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/03/19 16:19:05 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/04/10 15:06:41 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,6 @@ SRCS = src/ft_sl_utils.c src/map_create.c src/map_image.c src/player_moves.c \
 
 
 OBJS = $(SRCS:.c=.o)
-	
-BSRCS = bonus/src/ft_sl_utils_bonus.c \
-		bonus/src/map_create_bonus.c \
-		bonus/src/map_image_bonus.c \
-		bonus/src/hooks_bonus.c \
-		bonus/src/player_moves_bonus.c \
-		bonus/src/map_path_bonus.c \
-		bonus/src/so_long_bonus.c \
-		bonus/src/map_sprites.c \
-
-BOBJS = $(BSRCS:.c=.o)
 
 INCLUDES = -I includes/libft.h -I includes/so_long.h -I MLX/mlx.h
 
@@ -56,15 +45,9 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) libft.a MLX/libmlx.a $(MLX_FLAGS)  -o $(NAME)
 	@echo "$(GREEN)GTA San Andreas has been downloaded"
 	@echo "$(GREEN)and is ready to be played"
-
-bonus: $(BOBJS)
-	@make -sC $(LIBFT_DIR)
-	@make -sC MLX/
-	@cp ./libft/libft.a .
-	@$(CC) $(CFLAGS) $(BOBJS) $(INCLUDES) libft.a MLX/libmlx.a $(MLX_FLAGS)  -o $(NAME)
 	
 clean :
-		@$(RM) $(OBJS) $(BOBJS)
+		@$(RM) $(OBJS)
 		@echo "$(RED)did you save your game?"
 		@make clean -sC  $(LIBFT_DIR)
 		@make clean -sC  mlx

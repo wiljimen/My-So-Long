@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:11:39 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/21 18:17:03 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:19:17 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,7 @@ int	get_num_rows(int fd)
 	return (i);
 }
 
-void	map_print(t_data *mapp)
+void	ft_put_img(t_data *map, int y, int x, void *img)
 {
-	int	i;
-
-	i = 0;
-	while (mapp->map_ref[i])
-	{
-		printf("%s", mapp->map_ref[i]);
-		i++;
-	}
+	mlx_put_image_to_window(map->mlx, map->win, img, y, x);
 }

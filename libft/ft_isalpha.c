@@ -6,12 +6,11 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:23:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:13:14 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:35:38 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
 
 int	ft_isalpha(int c)
 {

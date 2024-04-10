@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/02 18:16:00 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:20:26 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include "libft.h"
 
 // Map size
@@ -33,7 +34,7 @@ typedef struct s_mapcnt
 	int	player;
 	int	coin;
 	int	exit;
-	int coin_left;
+	int	coin_left;
 	int	enemy;
 	int	exit_count;
 }		t_mapcnt;
@@ -50,19 +51,12 @@ typedef struct s_ppl
 // All paths
 typedef struct s_img
 {
-	void	*character;
-	void	*cjright;
-	void	*cjjump;
-	void	*cjcrouch;
-	void	*cj1right;
-	void	*cjleft;
-	void	*cj1left;
+	void	*cj;
 	void	*coin;
 	void	*exit;
 	void	*wall;
 	void	*background;
-	void	*enemyr;
-	void	*enemyl;
+	void	*police;
 	int		width;
 	int		height;
 }			t_img;
@@ -80,24 +74,17 @@ typedef struct s_data
 	t_img		*img;
 }				t_data;
 
-//All Sprites 
-# define PLAYER "./sprites/CJ-PARAO.xpm";
-# define FLOOR "./sprites/FLOOR.xpm";
-# define CRATE "./sprite/CRATE.xpm";
-# define PORSCHE "./sprite/Porsche.xpm";
-# define MONEY "./sprite/Money.xpm";
-
 // All Keycodes
-#define KEY_ESC 53
-#define KEY_W 13
-#define KEY_A 0
-#define KEY_S 1
-#define KEY_D 2
-#define KEY_UP 126
-#define KEY_LEFT 123
-#define KEY_DOWN 125
-#define KEY_RIGHT 124
-#define KEY_CLOSE_WIN 17
+# define KEY_ESC 53
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
+# define KEY_CLOSE_WIN 17
 
 //All functions needed
 void	ft_free(char **map, char *str);
@@ -128,13 +115,8 @@ void	find_p(t_data *mapp);
 int		key_hook(int keycode, t_data *mapp);
 int		x_pressed(t_data *mapp);
 void	ft_put_img(t_data *map, int y, int x, void *file);
-
-// All Bonus functions
-
+void	ft_moves(t_data *p, int y, int x);
 void	moves_counter_img(t_data *mapp);
-t_img	*player_sprites(t_data *mapp);
-void	police_loop(t_data *mapp);
-void	animate_police_loop(t_data *mapp);
-void 	animate_police(t_data *mapp, int y, int x);
+bool	ft_is_readable(char *file);
 
 #endif

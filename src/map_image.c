@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/03/18 17:31:03 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:32:39 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	fill_bckgnd(t_data *mapp)
 	int	j;
 
 	i = 0;
+	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
+			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	while (mapp->map_ref[i])
 	{
 		j = 0;
 		while (mapp->map_ref[i][j])
 		{
-			mlx_put_image_to_window(mapp->mlx, mapp->win,
-				mapp->img->background, j * 52, i * 52);
+			ft_put_img(mapp, j * 52, i * 52,
+				mapp->img->background);
 			j++;
 		}
 		i++;
@@ -35,14 +37,16 @@ t_img	*image_put(t_data *mapp)
 {
 	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->character = mlx_xpm_file_to_image(mapp->mlx,
+	mapp->img->cj = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cj.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/Money.xpm", &mapp->img->width, &mapp->img->height);
+			"./sprites/money.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/exit-close.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/CRATE.xpm", &mapp->img->width, &mapp->img->height);
+			"./sprites/crate.xpm", &mapp->img->width, &mapp->img->height);
+	mapp->img->police = mlx_xpm_file_to_image(mapp->mlx,
+			"./sprites/police.xpm", &mapp->img->width, &mapp->img->height);
 	if (mapp->mapcnt.coin == 0)
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
 				"./sprites/exit-open.xpm",
@@ -53,20 +57,17 @@ t_img	*image_put(t_data *mapp)
 void	which_image(t_data *mapp, int i, int j)
 {
 	if (mapp->map_ref[i][j] == 'P')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->character,
-			j * 52, i * 52);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->cj);
 	else if (mapp->map_ref[i][j] == 'E')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->exit,
-			j * 52, i * 52);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->exit);
 	else if (mapp->map_ref[i][j] == 'C')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->coin,
-			j * 52, i * 52);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->coin);
 	else if (mapp->map_ref[i][j] == '1')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->wall,
-			j * 52, i * 52);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->wall);
 	else if (mapp->map_ref[i][j] == '0')
-		mlx_put_image_to_window(mapp->mlx, mapp->win, mapp->img->background,
-			j * 52, i * 52);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->background);
+	else if (mapp->map_ref[i][j] == 'N')
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->police);
 }
 
 void	img_to_window(t_data *mapp)
@@ -87,4 +88,14 @@ void	img_to_window(t_data *mapp)
 		}
 		i++;
 	}
+	moves_counter_img(mapp);
+}
+
+void	moves_counter_img(t_data *mapp)
+{
+	char	*moves;
+
+	moves = ft_itoa(mapp->ppl.moves);
+	mlx_string_put(mapp->mlx, mapp->win, 10, 20, 0x000000, "Moves:");
+	mlx_string_put(mapp->mlx, mapp->win, 60, 20, 0x000000, moves);
 }
