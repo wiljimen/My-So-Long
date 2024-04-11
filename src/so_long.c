@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 15:38:47 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:40:55 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	check_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	check_args(argc, argv);
 	t_data	*mapp;
-	
+
+	check_args(argc, argv);
 	mapp = ft_calloc(sizeof(t_data), 1);
 	mapp->img = ft_calloc(1, sizeof(t_img));
 	mapp->map = map_maker(argv, mapp);
@@ -75,11 +75,10 @@ int	main(int argc, char **argv)
 	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
 			mapp->map.row * 52, "so_long");
 	img_to_window(mapp);
-	ft_printf("Moves: %d\n", mapp->ppl.moves);
+	ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
 	moves_counter_img(mapp);
 	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);
-	system("leaks -q so_long");
 	return (0);
 }

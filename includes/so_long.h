@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 16:07:09 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:42:40 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "libft.h"
+
+# define CLEAR "\x1b[0m"
+# define RED "\x1b[31m"
+# define YELLOW "\x1b[33m"
 
 // Map size
 typedef struct s_map
@@ -118,6 +122,8 @@ void	ft_put_img(t_data *map, int y, int x, void *file);
 void	ft_moves(t_data *p, int y, int x);
 void	moves_counter_img(t_data *mapp);
 bool	ft_is_readable(char *file);
-void	ft_protect(char **map);
+void	ft_protect_malloc(char *map);
+char	**ft_protect(char **mapp, char *temp);
+void	ft_end_message(t_data *p, char *str);
 
 #endif

@@ -6,41 +6,38 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:51:25 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/10 16:08:10 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:30:53 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void map_saver(char **argv, t_data *mapp)
+void	map_saver(char **argv, t_data *mapp)
 {
-    char	*aux;
-    char	*temp;
+	char	*aux;
+	char	*temp;
 	char	*temp2;
 
-    mapp->map.fd = open(argv[1], O_RDONLY);
+	mapp->map.fd = open(argv[1], O_RDONLY);
 	if (mapp->map.fd < 0)
-		return ;
-    aux = get_next_line(mapp->map.fd);
-    if (!aux)
-    {
-        (close(mapp->map.fd), print_error("Invalid or empty map"));
-        return ;
-    }
+		(close(mapp->map.fd), print_error("Invalid or empty map"));
+	aux = get_next_line(mapp->map.fd);
+	if (!aux)
+		(close(mapp->map.fd), print_error("Invalid or empty map"));
 	while (aux)
 	{
 		temp2 = temp;
 		temp = ft_strjoin(temp, aux);
 		if (!temp)
 		{
-			(free(aux), free(temp2));
+			(ft_protect_malloc(aux), free(temp2), free(temp));
 			return ;
 		}
 		(free(temp2), free(aux));
 		aux = get_next_line(mapp->map.fd);
 	}
-	mapp->map_ref = ft_split(temp, '\n');
-	mapp->map_cpy = ft_split(temp, '\n');
+	mapp->map_ref = ft_protect(mapp->map_ref, temp);
+	mapp->map_cpy = ft_protect(mapp->map_cpy, temp);
 	(free(temp), close(mapp->map.fd));
 }
 
