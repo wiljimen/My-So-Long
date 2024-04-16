@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:55:09 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:15:53 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_left_move_bonus(t_data *p)
 	if (p->map_ref[p->ppl.py][p->ppl.px + 1] != 'E')
 		p->map_ref[p->ppl.py][p->ppl.px + 1] = '0';
 	ft_printf(CLEAR "Moves: %d\n", p->ppl.moves);
-	img_to_window(p);
+	img_to_window_bonus(p);
 }
 
 void	ft_up_move_bonus(t_data *p)
@@ -55,7 +55,7 @@ void	ft_up_move_bonus(t_data *p)
 	if (p->map_ref[p->ppl.py + 1][p->ppl.px] != 'E')
 		p->map_ref[p->ppl.py + 1][p->ppl.px] = '0';
 	ft_printf(CLEAR "Moves: %d\n", p->ppl.moves);
-	img_to_window(p);
+	img_to_window_bonus(p);
 }
 
 void	ft_down_move_bonus(t_data *p)
@@ -78,7 +78,7 @@ void	ft_down_move_bonus(t_data *p)
 	if (p->map_ref[p->ppl.py - 1][p->ppl.px] != 'E')
 		p->map_ref[p->ppl.py - 1][p->ppl.px] = '0';
 	ft_printf(CLEAR "Moves: %d\n", p->ppl.moves);
-	img_to_window(p);
+	img_to_window_bonus(p);
 }
 
 void	ft_right_move_bonus(t_data *p)
@@ -101,7 +101,7 @@ void	ft_right_move_bonus(t_data *p)
 	if (p->map_ref[p->ppl.py][p->ppl.px - 1] != 'E')
 		p->map_ref[p->ppl.py][p->ppl.px - 1] = '0';
 	ft_printf(CLEAR "Moves: %d\n", p->ppl.moves);
-	img_to_window(p);
+	img_to_window_bonus(p);
 }
 
 void	find_p(t_data *mapp)

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/11 18:28:14 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:10:59 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	map_chr_check(t_data *mapp)
 		{
 			if (mapp->map_ref[i][j] != 'P' && mapp->map_ref[i][j] != 'C'
 				&& mapp->map_ref[i][j] != '1' && mapp->map_ref[i][j] != '0'
-				&& mapp->map_ref[i][j] != 'E' && mapp->map_ref[i][j] != 'N'
-				&& mapp->map_ref[i][j] != '\n')
+				&& mapp->map_ref[i][j] != 'E' && mapp->map_ref[i][j] != '\n')
 				ft_free(mapp->map_ref, RED "Bad characthers");
 			j++;
 		}
@@ -78,8 +77,6 @@ void	map_content(t_data *mapp)
 				mapp->mapcnt.exit += 1;
 			else if (mapp->map_ref[i][j] == 'C')
 				mapp->mapcnt.coin += 1;
-			else if (mapp->map_ref[i][j] == 'N')
-				mapp->mapcnt.enemy += 1;
 			j++;
 		}
 		i++;
@@ -95,7 +92,6 @@ void	map_check(t_data *mapp)
 	mapp->mapcnt.player = 0;
 	mapp->mapcnt.coin = 0;
 	mapp->mapcnt.exit = 0;
-	mapp->mapcnt.enemy = 0;
 	mapp->map.line = ft_strlen(mapp->map_ref[0]);
 	map_rectangle(mapp->map_ref, mapp->map.line, mapp->map.row);
 	map_chr_check(mapp);

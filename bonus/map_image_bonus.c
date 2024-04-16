@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:52:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:53:02 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:15:15 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	which_image(t_data *mapp, int i, int j)
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->police);
 }
 
-void	img_to_window(t_data *mapp)
+void	img_to_window_bonus(t_data *mapp)
 {
 	int	i;
 	int	j;

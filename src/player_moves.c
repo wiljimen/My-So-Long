@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:53:40 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:11:58 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	ft_left_move(t_data *p)
 	}
 	else if (p->map_ref[p->ppl.py][p->ppl.px - 1] == 'E' && p->mapcnt.coin == 0)
 		ft_good_message(p, YELLOW "Mission Passed\n+Respect\n");
-	else if (p->map_ref[p->ppl.py][p->ppl.px - 1] == 'N')
-		ft_bad_message(p, RED "Wasted\n");
 	p->ppl.moves++;
 	p->ppl.px--;
 	p->map_ref[p->ppl.py][p->ppl.px] = 'P';
@@ -47,8 +45,6 @@ void	ft_up_move(t_data *p)
 	}
 	else if (p->map_ref[p->ppl.py - 1][p->ppl.px] == 'E' && p->mapcnt.coin == 0)
 		ft_good_message(p, YELLOW "Mission Passed\n+Respect\n");
-	if (p->map_ref[p->ppl.py - 1][p->ppl.px] == 'N')
-		ft_bad_message(p, RED "Wasted\n");
 	p->ppl.moves++;
 	p->ppl.py--;
 	p->map_ref[p->ppl.py][p->ppl.px] = 'P';
@@ -70,8 +66,6 @@ void	ft_down_move(t_data *p)
 	}
 	else if (p->map_ref[p->ppl.py + 1][p->ppl.px] == 'E' && p->mapcnt.coin == 0)
 		ft_good_message(p, YELLOW "Mission Passed\n+Respect\n");
-	else if (p->map_ref[p->ppl.py + 1][p->ppl.px] == 'N')
-		ft_bad_message(p, RED "Wasted\n");
 	p->ppl.moves++;
 	p->ppl.py++;
 	p->map_ref[p->ppl.py][p->ppl.px] = 'P';
@@ -93,8 +87,6 @@ void	ft_right_move(t_data *p)
 	}
 	else if (p->map_ref[p->ppl.py][p->ppl.px + 1] == 'E' && p->mapcnt.coin == 0)
 		ft_good_message(p, YELLOW "Mission Passed\n+Respect\n");
-	else if (p->map_ref[p->ppl.py][p->ppl.px + 1] == 'N')
-		ft_bad_message(p, RED "Wasted\n");
 	p->ppl.moves++;
 	p->ppl.px++;
 	p->map_ref[p->ppl.py][p->ppl.px] = 'P';

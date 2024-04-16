@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:55:14 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:15:29 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int		key_hook(int keycode, t_data *mapp);
 int		x_pressed(t_data *mapp);
 void	ft_put_img(t_data *map, int y, int x, void *file);
 void	ft_moves(t_data *p, int y, int x);
-void	moves_counter_img(t_data *mapp);
 bool	ft_is_readable(char *file);
 void	ft_protect_malloc(char *map);
 char	**ft_protect(char **mapp, char *temp);
@@ -138,5 +137,7 @@ void	ft_left_move_bonus(t_data *p);
 void	ft_up_move_bonus(t_data *p);
 void	ft_down_move_bonus(t_data *p);
 void	ft_right_move_bonus(t_data *p);
+void	moves_counter_img(t_data *mapp);
+void	img_to_window_bonus(t_data *mapp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/11 19:20:29 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:12:26 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ t_img	*image_put(t_data *mapp)
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/crate.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->police = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/police.xpm", &mapp->img->width, &mapp->img->height);
 	if (mapp->mapcnt.coin == 0)
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
 				"./sprites/exit-open.xpm",
@@ -65,8 +63,6 @@ void	which_image(t_data *mapp, int i, int j)
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->wall);
 	else if (mapp->map_ref[i][j] == '0')
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->background);
-	else if (mapp->map_ref[i][j] == 'N')
-		ft_put_img(mapp, j * 52, i * 52, mapp->img->police);
 }
 
 void	img_to_window(t_data *mapp)
@@ -87,15 +83,4 @@ void	img_to_window(t_data *mapp)
 		}
 		i++;
 	}
-	moves_counter_img(mapp);
-}
-
-void	moves_counter_img(t_data *mapp)
-{
-	char	*moves;
-
-	moves = ft_itoa(mapp->ppl.moves);
-	mlx_string_put(mapp->mlx, mapp->win, 10, 20, 0x000000, "Moves:");
-	mlx_string_put(mapp->mlx, mapp->win, 60, 20, 0x000000, moves);
-	free(moves);
 }

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:12:59 by wiljimen         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/so_long.h"
 
 bool	ft_is_readable(char *file)
@@ -74,8 +62,9 @@ int	main(int argc, char **argv)
 	mapp->mlx = mlx_init();
 	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
 			mapp->map.row * 52, "so_long");
-	img_to_window(mapp);
+	img_to_window_bonus(mapp);
 	ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
+	moves_counter_img(mapp);
 	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
 	mlx_loop(mapp->mlx);

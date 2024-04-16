@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:51:25 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:49:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:05:27 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ void	floodfill_map_coin_bonus(t_data *mapp, int y, int x)
 	if (mapp->map_cpy[y][x] == 'E')
 		mapp->mapcnt.exit_count--;
 	mapp->map_cpy[y][x] = 'X';
-	floodfill_map_coin(mapp, y, x + 1);
-	floodfill_map_coin(mapp, y + 1, x);
-	floodfill_map_coin(mapp, y, x - 1);
-	floodfill_map_coin(mapp, y - 1, x);
+	floodfill_map_coin_bonus(mapp, y, x + 1);
+	floodfill_map_coin_bonus(mapp, y + 1, x);
+	floodfill_map_coin_bonus(mapp, y, x - 1);
+	floodfill_map_coin_bonus(mapp, y - 1, x);
 }
 
 void	valid_exit(t_data *mapp, int y, int x)
 {
 	ft_coin_left(mapp);
-	floodfill_map_coin(mapp, y, x);
+	floodfill_map_coin_bonus(mapp, y, x);
 	if (mapp->mapcnt.coin_left > 0 || mapp->mapcnt.exit_count > 0)
 	{
 		ft_free(mapp->map_cpy, RED "No valid path\n");

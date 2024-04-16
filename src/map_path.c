@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:51:25 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:56:11 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:11:25 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	ft_coin_left(t_data *mapp)
 
 void	floodfill_map_coin(t_data *mapp, int y, int x)
 {
-	if (mapp->map_cpy[y][x] == '1' || mapp->map_cpy[y][x] == 'N'
-		|| mapp->map_cpy[y][x] == 'X')
+	if (mapp->map_cpy[y][x] == '1' || mapp->map_cpy[y][x] == 'X')
 		return ;
 	if (mapp->map_cpy[y][x] == 'C')
 		mapp->mapcnt.coin_left--;
