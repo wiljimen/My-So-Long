@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_create.c                                       :+:      :+:    :+:   */
+/*   map_create_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:09:21 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/11 18:28:14 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:53:07 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	map_rectangle(char **map, int width, int height)
 	}
 }
 
-void	map_chr_check(t_data *mapp)
+void	map_chr_check_bonus(t_data *mapp)
 {
 	int	i;
 	int	j;
@@ -61,7 +61,7 @@ void	map_chr_check(t_data *mapp)
 	}
 }
 
-void	map_content(t_data *mapp)
+void	map_content_bonus(t_data *mapp)
 {
 	int	i;
 	int	j;

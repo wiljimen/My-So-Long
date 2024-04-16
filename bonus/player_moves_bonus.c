@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_moves.c                                     :+:      :+:    :+:   */
+/*   player_moves_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 15:53:40 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:55:09 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_left_move(t_data *p)
+void	ft_left_move_bonus(t_data *p)
 {
 	if (p->map_ref[p->ppl.py][p->ppl.px - 1] == '1')
 		return ;
@@ -35,7 +35,7 @@ void	ft_left_move(t_data *p)
 	img_to_window(p);
 }
 
-void	ft_up_move(t_data *p)
+void	ft_up_move_bonus(t_data *p)
 {
 	if (p->map_ref[p->ppl.py - 1][p->ppl.px] == '1')
 		return ;
@@ -58,7 +58,7 @@ void	ft_up_move(t_data *p)
 	img_to_window(p);
 }
 
-void	ft_down_move(t_data *p)
+void	ft_down_move_bonus(t_data *p)
 {
 	if (p->map_ref[p->ppl.py + 1][p->ppl.px] == '1')
 		return ;
@@ -81,7 +81,7 @@ void	ft_down_move(t_data *p)
 	img_to_window(p);
 }
 
-void	ft_right_move(t_data *p)
+void	ft_right_move_bonus(t_data *p)
 {
 	if (p->map_ref[p->ppl.py][p->ppl.px + 1] == '1')
 		return ;

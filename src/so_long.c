@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/11 16:40:55 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 18:29:47 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ void	check_args(int argc, char **argv)
 	char	*ber;
 
 	if (argc == 1)
-		print_error("Error, not map found");
+		print_error(RED "Error, not map found");
 	if (argc != 2)
-		print_error("More or less arguments than 2");
+		print_error(RED "More or less arguments than 2");
 	if (ft_is_readable(argv[1]) == false)
-		print_error("Empty file or not readable");
+		print_error(RED "Empty file or not readable");
 	if (ft_strrchr(argv[1], '.'))
 	{
 		ber = ft_strnstr(argv[1], ".ber", ft_strlen(argv[1]));
 		if (ft_strlen(ber) != 4)
-			print_error("Bad extension, try with a .ber file");
+			print_error(RED "Bad extension, try with a .ber file");
 		if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber",
 				max_len(ft_strrchr(argv[1], '.'), ".ber")) != 0)
-			print_error("Bad extension, try with a .ber file");
+			print_error(RED "Bad extension, try with a .ber file");
 		if (!ft_strncmp(argv[1], ".ber", ft_strlen(argv[1])))
-			print_error("There's nothing before .ber, try with another file");
+			print_error(RED "There's nothing before .ber");
 	}
 	else
-		print_error("Bad extension, try with a .ber file");
+		print_error(RED "Bad extension, try with a .ber file");
 }
 
 int	main(int argc, char **argv)

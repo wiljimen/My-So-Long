@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/11 16:42:40 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:55:14 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_ppl
 	int	moves;
 	int	py;
 	int	px;
+	int	ey;
+	int	ex;
 }		t_ppl;
 
 // All paths
@@ -124,6 +126,17 @@ void	moves_counter_img(t_data *mapp);
 bool	ft_is_readable(char *file);
 void	ft_protect_malloc(char *map);
 char	**ft_protect(char **mapp, char *temp);
-void	ft_end_message(t_data *p, char *str);
+void	ft_bad_message(t_data *p, char *str);
+void	ft_good_message(t_data *p, char *str);
+
+// All Bonus Functions
+
+void	floodfill_map_coin_bonus(t_data *mapp, int y, int x);
+void	map_content_bonus(t_data *mapp);
+void	map_chr_check_bonus(t_data *mapp);
+void	ft_left_move_bonus(t_data *p);
+void	ft_up_move_bonus(t_data *p);
+void	ft_down_move_bonus(t_data *p);
+void	ft_right_move_bonus(t_data *p);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/04/11 16:04:23 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/04/11 17:47:43 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ MAKEFLAGS += --silent
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -sC $(LIBFT_DIR)
-	@make -sC MLX/
+	@make all -sC $(LIBFT_DIR)
+	@make all -sC MLX/
 	@cp ./libft/libft.a .
 	@$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) libft.a MLX/libmlx.a $(MLX_FLAGS)  -o $(NAME)
 	@echo "$(GREEN)GTA San Andreas has been downloaded"
