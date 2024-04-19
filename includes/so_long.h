@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:15:29 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:56:36 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,29 @@ typedef struct s_ppl
 	int	px;
 	int	ey;
 	int	ex;
+	int	dir;
 }		t_ppl;
 
 // All paths
 typedef struct s_img
 {
 	void	*cj;
+	void	*cjright;
+	void	*cjleft;
+	void	*cj1right;
+	void	*cj1left;
+	void	*cj2r;
+	void	*cj2l;
+	void	*cjjump;
+	void	*cjcrouch;
+	void	*cjwait;
+	void	*cjdown;
 	void	*coin;
 	void	*exit;
 	void	*wall;
 	void	*background;
-	void	*police;
+	void	*policel;
+	void	*policer;
 	int		width;
 	int		height;
 }			t_img;
@@ -74,6 +86,8 @@ typedef struct s_data
 	void		*win;
 	char		**map_ref;
 	char		**map_cpy;
+	int			frame;
+	int			frame_police;
 	t_map		map;
 	t_mapcnt	mapcnt;
 	t_ppl		ppl;
@@ -139,5 +153,15 @@ void	ft_down_move_bonus(t_data *p);
 void	ft_right_move_bonus(t_data *p);
 void	moves_counter_img(t_data *mapp);
 void	img_to_window_bonus(t_data *mapp);
+t_img	*player_sprites(t_data *mapp);
+int		ft_frames(t_data *map);
+int		ft_frames_police(t_data *map);
+void	ft_player(t_data *p, int y, int x);
+void	ft_stay_frame(t_data *p, int y, int x);
+void	ft_right_frame(t_data *p, int y, int x);
+void	ft_up_frame(t_data *p, int y, int x);
+void	ft_down_frame(t_data *p, int y, int x);
+void	ft_left_frame(t_data *p, int y, int x);
+void	police_moves(t_data *p, int y, int x);
 
 #endif

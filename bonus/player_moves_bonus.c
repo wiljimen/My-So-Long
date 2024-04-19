@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:15:11 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:15:53 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:45:15 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	ft_left_move_bonus(t_data *p)
 {
+	p->frame = 0;
+	p->ppl.dir = KEY_LEFT;
 	if (p->map_ref[p->ppl.py][p->ppl.px - 1] == '1')
+	{
+		p->ppl.dir = -1;
 		return ;
+	}
 	else if (p->map_ref[p->ppl.py][p->ppl.px - 1] == 'C')
 	{
 		p->mapcnt.coin--;
@@ -37,8 +42,13 @@ void	ft_left_move_bonus(t_data *p)
 
 void	ft_up_move_bonus(t_data *p)
 {
+	p->frame = 0;
+	p->ppl.dir = KEY_UP;
 	if (p->map_ref[p->ppl.py - 1][p->ppl.px] == '1')
+	{
+		p->ppl.dir = -1;
 		return ;
+	}
 	else if (p->map_ref[p->ppl.py - 1][p->ppl.px] == 'C')
 	{
 		p->mapcnt.coin--;
@@ -60,8 +70,13 @@ void	ft_up_move_bonus(t_data *p)
 
 void	ft_down_move_bonus(t_data *p)
 {
+	p->frame = 0;
+	p->ppl.dir = KEY_DOWN;
 	if (p->map_ref[p->ppl.py + 1][p->ppl.px] == '1')
+	{
+		p->ppl.dir = -1;
 		return ;
+	}
 	else if (p->map_ref[p->ppl.py + 1][p->ppl.px] == 'C')
 	{
 		p->mapcnt.coin--;
@@ -83,8 +98,13 @@ void	ft_down_move_bonus(t_data *p)
 
 void	ft_right_move_bonus(t_data *p)
 {
+	p->frame = 0;
+	p->ppl.dir = KEY_RIGHT;
 	if (p->map_ref[p->ppl.py][p->ppl.px + 1] == '1')
+	{
+		p->ppl.dir = -1;
 		return ;
+	}
 	else if (p->map_ref[p->ppl.py][p->ppl.px + 1] == 'C')
 	{
 		p->mapcnt.coin--;

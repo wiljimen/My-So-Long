@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:52:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:15:15 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:56:15 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	fill_bckgnd(t_data *mapp)
 	int	j;
 
 	i = 0;
-	find_p(mapp);
 	mapp->img = image_put(mapp);
 	while (mapp->map_ref[i])
 	{
@@ -34,6 +33,7 @@ void	fill_bckgnd(t_data *mapp)
 
 t_img	*image_put(t_data *mapp)
 {
+	player_sprites(mapp);
 	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->cj = mlx_xpm_file_to_image(mapp->mlx,
@@ -44,8 +44,10 @@ t_img	*image_put(t_data *mapp)
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/crate.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->police = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/police.xpm", &mapp->img->width, &mapp->img->height);
+	mapp->img->policer = mlx_xpm_file_to_image(mapp->mlx,
+			"./sprites/policer.xpm", &mapp->img->width, &mapp->img->height);
+	mapp->img->policel = mlx_xpm_file_to_image(mapp->mlx,
+			"./sprites/policel.xpm", &mapp->img->width, &mapp->img->height);
 	if (mapp->mapcnt.coin == 0)
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
 				"./sprites/exit-open.xpm",
@@ -56,7 +58,7 @@ t_img	*image_put(t_data *mapp)
 void	which_image(t_data *mapp, int i, int j)
 {
 	if (mapp->map_ref[i][j] == 'P')
-		ft_put_img(mapp, j * 52, i * 52, mapp->img->cj);
+		ft_player(mapp, j * 52, i * 52);
 	else if (mapp->map_ref[i][j] == 'E')
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->exit);
 	else if (mapp->map_ref[i][j] == 'C')
@@ -66,7 +68,7 @@ void	which_image(t_data *mapp, int i, int j)
 	else if (mapp->map_ref[i][j] == '0')
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->background);
 	else if (mapp->map_ref[i][j] == 'N')
-		ft_put_img(mapp, j * 52, i * 52, mapp->img->police);
+		police_moves(mapp, j * 52, i * 52);
 }
 
 void	img_to_window_bonus(t_data *mapp)
@@ -75,8 +77,6 @@ void	img_to_window_bonus(t_data *mapp)
 	int	j;
 
 	i = 0;
-	mapp->img = image_put(mapp);
-	fill_bckgnd(mapp);
 	while (mapp->map_ref[i])
 	{
 		j = 0;

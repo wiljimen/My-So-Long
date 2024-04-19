@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/19 17:51:43 by wiljimen          #+#    #+#             */
+/*   Updated: 2024/04/19 17:59:38 by wiljimen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 bool	ft_is_readable(char *file)
@@ -23,6 +35,11 @@ t_map	map_maker(char **argv, t_data *mapp)
 	map_saver(argv, mapp);
 	map_check(mapp);
 	find_p(mapp);
+	ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
+	mapp->mlx = mlx_init();
+	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
+			mapp->map.row * 52, "so_long");
+	fill_bckgnd(mapp);
 	return (mapp->map);
 }
 
@@ -51,22 +68,37 @@ void	check_args(int argc, char **argv)
 		print_error(RED "Bad extension, try with a .ber file");
 }
 
+int	ft_frames(t_data *mapp)
+{
+	mlx_clear_window(mapp->mlx, mapp->win);
+	fill_bckgnd(mapp);
+	img_to_window_bonus(mapp);
+	mapp->frame++;
+	if (mapp->frame >= 60)
+		mapp->frame = 0;
+	mapp->frame_police++;
+	if (mapp->frame_police >= 60)
+		mapp->frame_police = 0;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*mapp;
 
 	check_args(argc, argv);
 	mapp = ft_calloc(sizeof(t_data), 1);
+	if (!mapp)
+		print_error("Bad map calloc");
 	mapp->img = ft_calloc(1, sizeof(t_img));
+	if (!mapp->img)
+		print_error("Bad image calloc");
 	mapp->map = map_maker(argv, mapp);
-	mapp->mlx = mlx_init();
-	mapp->win = mlx_new_window(mapp->mlx, mapp->map.line * 52,
-			mapp->map.row * 52, "so_long");
+	mapp->img = image_put(mapp);
 	img_to_window_bonus(mapp);
-	ft_printf(CLEAR "Moves: %d\n", mapp->ppl.moves);
-	moves_counter_img(mapp);
 	mlx_hook(mapp->win, KEY_CLOSE_WIN, 0, x_pressed, mapp);
 	mlx_key_hook(mapp->win, key_hook, mapp);
+	mlx_loop_hook(mapp->mlx, ft_frames, mapp);
 	mlx_loop(mapp->mlx);
 	return (0);
 }

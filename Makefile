@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/04/16 16:14:56 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/04/19 17:39:25 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIBFT_DIR = libft/
 
 BSRCS = bonus/ft_utils_bonus.c bonus/map_create_bonus.c bonus/map_image_bonus.c \
 		bonus/player_moves_bonus.c bonus/hooks_bonus.c bonus/map_path_bonus.c \
-		bonus/so_long_bonus.c bonus/ft_utils_two_bonus.c
+		bonus/so_long_bonus.c bonus/ft_utils_two_bonus.c bonus/player_frames_bonus.c \
 		
 SRCS = src/ft_utils.c src/map_create.c src/map_image.c src/player_moves.c \
 		src/hooks.c src/map_path.c src/so_long.c src/ft_utils_two.c
