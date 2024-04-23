@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 12:28:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/23 13:00:01 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:18:25 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_img	*player_sprites1(t_data *mapp)
 {
 	mapp->img->cjright = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cjright.xpm", &mapp->img->width, &mapp->img->height);
-	ft_error_sprite(mapp->img->cjright,  RED "Error in Sprite: cjright");
+	ft_error_sprite(mapp->img->cjright, RED "Error in Sprite: cjright");
 	mapp->img->cj2r = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cj2r.xpm", &mapp->img->width, &mapp->img->height);
 	ft_error_sprite(mapp->img->cj2r, RED "Error in Sprite: cj2r");
@@ -34,7 +34,7 @@ t_img	*player_sprites1(t_data *mapp)
 	ft_error_sprite(mapp->img->cjleft, RED"Error in Sprite: cjleft");
 	mapp->img->cj2l = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cj2l.xpm", &mapp->img->width, &mapp->img->height);
-	ft_error_sprite(mapp->img->cj2l, RED "Error in Sprite: cj2l");	
+	ft_error_sprite(mapp->img->cj2l, RED "Error in Sprite: cj2l");
 	return (mapp->img);
 }
 

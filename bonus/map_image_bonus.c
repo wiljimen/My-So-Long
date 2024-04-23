@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:52:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/23 13:00:45 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:17:08 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ t_img	*image_put(t_data *mapp)
 	if (mapp->mapcnt.coin == 0)
 	{
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
-				"./sprites/exit-car.xpm", &mapp->img->width, &mapp->img->height);
-		ft_error_sprite(mapp->img->exit, RED "Error in Sprite: exit (coin = 0)");
+				"./sprites/exit-car.xpm",
+				&mapp->img->width, &mapp->img->height);
+		ft_error_sprite(mapp->img->exit, RED "Error in Sprite: exit(coin = 0)");
 	}
 	return (mapp->img);
 }
