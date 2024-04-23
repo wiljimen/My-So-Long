@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/23 13:02:17 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:16:25 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_img	*image_put(t_data *mapp)
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
 	ft_error_sprite(mapp->img->background, RED "Error in Sprite: background");
 	mapp->img->cjwait = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj.xpm", &mapp->img->width, &mapp->img->height);
+			"./sprites/cjwait.xpm", &mapp->img->width, &mapp->img->height);
 	ft_error_sprite(mapp->img->cjwait, RED "Error in Sprite: cjwait");
 	mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/money.xpm", &mapp->img->width, &mapp->img->height);

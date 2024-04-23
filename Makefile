@@ -6,7 +6,7 @@
 #    By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 11:52:24 by wiljimen          #+#    #+#              #
-#    Updated: 2024/04/23 12:50:33 by wiljimen         ###   ########.fr        #
+#    Updated: 2024/04/23 13:19:04 by wiljimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CLEAR	=	\033[0m
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM = rm -f
 
