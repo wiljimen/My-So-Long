@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:58:50 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:12:59 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:07:38 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ bool	ft_is_readable(char *file)
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
-	mapp->map.line = ft_strlen(argv[1]);
 	mapp->map.fd = open(argv[1], O_RDONLY);
+	mapp->map.line = ft_strlen(argv[1]);
+	if (mapp->map.line > 5120)
+		print_error("Error, more pixels than display");
 	mapp->map.row = get_num_rows(mapp->map.fd);
+	if (mapp->map.row > 2880)
+		print_error("Error, more pixels than display");
 	mapp->map_ref = ft_calloc(sizeof(char *), mapp->map.row + 1);
 	map_saver(argv, mapp);
 	map_check(mapp);

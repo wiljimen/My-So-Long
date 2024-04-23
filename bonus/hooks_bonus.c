@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:59:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/19 17:59:13 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:58:10 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,18 @@ void	police_moves(t_data *p, int y, int x)
 
 t_img	*player_sprites(t_data *mapp)
 {
-	mapp->img->cj1right = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj1right.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cjright = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cjright.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cj2r = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj2r.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cj1left = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj1left.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cjleft = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cjleft.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cj2l = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj2l.xpm", &mapp->img->width, &mapp->img->height);
+	player_sprites1(mapp);
 	mapp->img->cjjump = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cjjump.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->cjjump, RED "Error in Sprite: cjjump");
 	mapp->img->cjcrouch = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cjcrouch.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->cjcrouch, RED "Error in Sprite: cjcrouch");
 	mapp->img->cjwait = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cjwait.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->cjwait, RED "Error in Sprite: cjwait");
 	mapp->img->cjdown = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cjdown.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->cjdown, RED "Error in Sprite: cjdown");
 	return (mapp->img);
 }

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:52:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/19 17:56:15 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:00:45 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,13 @@ void	fill_bckgnd(t_data *mapp)
 t_img	*image_put(t_data *mapp)
 {
 	player_sprites(mapp);
-	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cj = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/cj.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/money.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/crate.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->policer = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/policer.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->policel = mlx_xpm_file_to_image(mapp->mlx,
-			"./sprites/policel.xpm", &mapp->img->width, &mapp->img->height);
+	map_sprites(mapp);
 	if (mapp->mapcnt.coin == 0)
+	{
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
-				"./sprites/exit-open.xpm",
-				&mapp->img->width, &mapp->img->height);
+				"./sprites/exit-car.xpm", &mapp->img->width, &mapp->img->height);
+		ft_error_sprite(mapp->img->exit, RED "Error in Sprite: exit (coin = 0)");
+	}
 	return (mapp->img);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:01 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/16 16:12:26 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:02:17 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,32 @@ t_img	*image_put(t_data *mapp)
 {
 	mapp->img->background = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
-	mapp->img->cj = mlx_xpm_file_to_image(mapp->mlx,
+	ft_error_sprite(mapp->img->background, RED "Error in Sprite: background");
+	mapp->img->cjwait = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/cj.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->cjwait, RED "Error in Sprite: cjwait");
 	mapp->img->coin = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/money.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->coin, RED "Error in Sprite: coin");
 	mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/floor.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->exit, RED "Error in Sprite: exit");
 	mapp->img->wall = mlx_xpm_file_to_image(mapp->mlx,
 			"./sprites/crate.xpm", &mapp->img->width, &mapp->img->height);
+	ft_error_sprite(mapp->img->wall, RED "Error in Sprite: wall");
 	if (mapp->mapcnt.coin == 0)
+	{
 		mapp->img->exit = mlx_xpm_file_to_image(mapp->mlx,
-				"./sprites/exit-open.xpm",
-				&mapp->img->width, &mapp->img->height);
+				"./sprites/exit-car.xpm", &mapp->img->width, &mapp->img->height);
+		ft_error_sprite(mapp->img->exit, RED"Error in Sprite: exit (coin = 0)");
+	}
 	return (mapp->img);
 }
 
 void	which_image(t_data *mapp, int i, int j)
 {
 	if (mapp->map_ref[i][j] == 'P')
-		ft_put_img(mapp, j * 52, i * 52, mapp->img->cj);
+		ft_put_img(mapp, j * 52, i * 52, mapp->img->cjwait);
 	else if (mapp->map_ref[i][j] == 'E')
 		ft_put_img(mapp, j * 52, i * 52, mapp->img->exit);
 	else if (mapp->map_ref[i][j] == 'C')

@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:27:22 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/19 17:56:36 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:53:29 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_ppl
 // All paths
 typedef struct s_img
 {
-	void	*cj;
 	void	*cjright;
 	void	*cjleft;
 	void	*cj1right;
@@ -141,6 +140,7 @@ void	ft_protect_malloc(char *map);
 char	**ft_protect(char **mapp, char *temp);
 void	ft_bad_message(t_data *p, char *str);
 void	ft_good_message(t_data *p, char *str);
+void	ft_error_sprite(void *sprite, char *str);
 
 // All Bonus Functions
 
@@ -163,5 +163,7 @@ void	ft_up_frame(t_data *p, int y, int x);
 void	ft_down_frame(t_data *p, int y, int x);
 void	ft_left_frame(t_data *p, int y, int x);
 void	police_moves(t_data *p, int y, int x);
+t_img	*player_sprites1(t_data *mapp);
+t_img	*map_sprites(t_data *mapp);
 
 #endif

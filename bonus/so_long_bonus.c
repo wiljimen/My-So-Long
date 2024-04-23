@@ -6,7 +6,7 @@
 /*   By: wiljimen <wiljimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:51:43 by wiljimen          #+#    #+#             */
-/*   Updated: 2024/04/19 17:59:38 by wiljimen         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:13:52 by wiljimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ bool	ft_is_readable(char *file)
 
 t_map	map_maker(char **argv, t_data *mapp)
 {
-	mapp->map.line = ft_strlen(argv[1]);
 	mapp->map.fd = open(argv[1], O_RDONLY);
+	mapp->map.line = ft_strlen(argv[1]);
 	mapp->map.row = get_num_rows(mapp->map.fd);
 	mapp->map_ref = ft_calloc(sizeof(char *), mapp->map.row + 1);
 	map_saver(argv, mapp);
